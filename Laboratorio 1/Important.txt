@@ -1,0 +1,6 @@
+Link para descargar Symbolic: 
+
+https://github-production-release-asset-2e65be.s3.amazonaws.com/18641463/bb685b80-9e58-11e9-902b-225a2beeddf8?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20190907%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20190907T213505Z&X-Amz-Expires=300&X-Amz-Signature=9f52a1cfc29a280594af4866e26f25f633f572a2b749a180a073479764d17c18&X-Amz-SignedHeaders=host&actor_id=0&response-content-disposition=attachment%3B%20filename%3Dsymbolic-win-py-bundle-2.8.0.tar.gz&response-content-type=application%2Foctet-stream
+
+
+El comando para instalarlo es "pkg install symbolic-win-py-bundle-2.8.0.tar.gz"
