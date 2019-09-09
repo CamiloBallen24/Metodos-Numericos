@@ -4,3 +4,5 @@ https://github-production-release-asset-2e65be.s3.amazonaws.com/18641463/bb685b8
 
 
 El comando para instalarlo es "pkg install symbolic-win-py-bundle-2.8.0.tar.gz"
+
+La sentencia para la función de la clase es: 1980*(1-exp(-x/10))-98*x
