@@ -1,63 +1,52 @@
+pkg load symbolic;
+syms x;
 format long;
 
-#Se lee el numero de punto
-while(true)
-  try 
-    n = input("Ingrese el numero de puntos: ");
-    n = n+2-2;
+% Se ingresa la funcion correspondiente
+while 1
+  try
+    f = input('ingrese f(x): ','s');
+    f = inline(f,'x');
+    f(1);% se prueba la funcion
     break;
   catch
-    printf("Favor ingresar un valor apropiado\n");
+    printf("Ingrese una funcion valida \n");
   end_try_catch
-endwhile 
+endwhile
 
-#Se lee el vector de las abscisas X
-while(true)
-  try 
-    X = input("Ingrese el vector de las abscisas X: ");
-    h=X(2)-X(1);
-    for i=1:n-1
-      if(X(i+1)-X(i)!=h)
-        X(n+1);
-      endif
-    endfor
+% Ingresa el numero de nodos
+while 1
+  try
+    num_nodos = input('ingrese el numero de nodos a usar: ');
     break;
   catch
-    printf("Favor ingresar un vector apropiado\n");
+    printf("Ingrese una numero\n");
   end_try_catch
-endwhile 
+endwhile
 
-#Se lee el vector de ordenadas Y
-while(true)
-  try 
-    Y = input("Ingrese el vector de ordenadas Y: ");
-    Y(n);
-    break;
-  catch
-    printf("Favor ingresar un vector apropiado\n");
-  end_try_catch
-endwhile 
+%Ingresa los nodos
+X = zeros(1,num_nodos);
+Y = zeros(1,num_nodos);
+for i=1:num_nodos
+  while 1
+    try
+      printf("Ingrese el nodo X%d",i-1);
+      X(i) = input(": ");
+      Y(i) = f(X(i));
+      break;
+    catch
+      printf("Ingrese una numero\n");
+    end_try_catch
+  endwhile
+endfor
 
-#Se lee el valor a interpolar
-while(true)
-  try 
-    x = input("Ingrese el valor a interpolar: ");
-    x = x+2-2;
-    break;
-  catch
-    printf("Favor ingresar un punto apropiado\n");
-  end_try_catch
-endwhile 
-
-#Ingrese el grado del polinomio que se daría
-while(true)
-  try 
-    grado = input("Ingrese el grado del polinomio que se daría: ");
-    grado = grado+2-2;
-    break;
-  catch
-    printf("Favor ingresar un valor apropiado\n");
-  end_try_catch
-endwhile 
-
-Newton(X,Y,n,x,grado)
+  %se evalue el metodo
+  PP=Newton(X,Y, num_nodos);
+ % la funcion devuelve un string y se convierte en funcion
+ P = function_handle(sym(PP));
+ %se especifican los X con los cuales se va a aproximar
+ w_pol = linspace(-3,4,100);
+ %se Grafica
+ plot(w_pol,P(w_pol),"b-");
+ legend('Aproximacion');
+ 

@@ -31,15 +31,6 @@ for i=1:num_nodos
     end_try_catch
   endwhile
 endfor
-% Ingresa el valor de X que se quiere aproximar
-while 1
-  try 
-    aproximacion = input('ingrese el valor de X que quiere aproximar: ');
-    break;
-  catch
-    printf("Ingrese una numero\n");
-  end_try_catch
-endwhile
 
 %pkg load symbolic
 #Con ayuda de la funcion f(la que se quiere aproximar) se calcular las ordenadas
@@ -73,10 +64,11 @@ for i=1:N
     if i~=j
       #Se contruye la parte de PCL L[N,i](x) que involucra al nodo j y se almacena
       #en la variable junta a las partes que ya se hallaron
-      Li= Li* (x-vpa(nodos(j)))/(vpa(nodos(i))-vpa(nodos(j)));
+      Li= Li* (x-(nodos(j)))/((nodos(i))-(nodos(j)));
     endif
   endfor
   #Se muestra el PCL L[N,i](x)
+  
   printf("Parte del Polinomio L%d      ",i-1);
   Li
   printf("\n");
@@ -88,20 +80,15 @@ endfor
 
 #Una vez se contruya el Polinomio Interpolador de Lagrange se imprime
 printf("El polinomio aproximado es: \n");
-PN
+simplify(PN)
 
-#Usando las herramientas proveidas por symbolic se evalua el Polinomio 
-#Interpolador de Lagrange en la x que se quiere aproximar
-x=aproximacion;
-printf("La aproximacion obtenida es:");
-subs(PN)
 
 #Se definen los vectores que mostraran los datos en la grafica
-w = linspace(0,2*pi,100);
+w = linspace(0,10,100);
 w_pol = linspace(nodos(1),nodos(length(nodos)),100);
 
 #Se define el Polinomio Interpolador de Lagrange como la funcion aproximadad
-funcion_aprox= function_handle(PN)
+funcion_aprox= function_handle(PN);
 
 #Se grafica tanto el Polinomio Interpolador de Lagrange como la funcion original
 plot(w,f(w),"r-",w_pol,funcion_aprox(w_pol),"b-");
