@@ -4,7 +4,7 @@ data = load('data.txt');
 x = data(:,1);
 N = length(x);
 y = data(:,2);
-X2 = x.*x;
+x2 = x.*x;
 xy = x.*y;
 % se suman obtiene los datos proveniente de la suman y multiplicacion de X,Y
 X = sum(x);
