@@ -5,7 +5,7 @@ function S = Simpson (f,a,b,M)
   sum2=0;
   %variable en la que se evaluara la funcion
 
-  %Se halla la sumatoria de las funciones evaluada en numeros pares e impares
+  %Se halla la sumatoria de la funcion evaluada en numeros pares e impares
   for k=1:2*M-1
     if mod(k,2)==0
       h1=a+k*h;
