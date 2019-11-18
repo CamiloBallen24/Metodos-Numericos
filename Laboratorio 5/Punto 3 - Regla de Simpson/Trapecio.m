@@ -15,6 +15,7 @@ function T = Trapecio(f,a,b,M)
   T = (h/2)*(f(a) + f(b)) + (h)*sum ;
   %Hallamos la diferencia entre el resultado obtenido, y el valor real de la integral
   E = abs(T - quad(f,a,b));
+  %Se imprimen los valores obtenidos
   printf('Trapecio: %f \n', T);
   printf('Error: %f \n\n', E);
   
