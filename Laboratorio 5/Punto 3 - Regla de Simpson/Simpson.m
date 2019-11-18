@@ -17,10 +17,12 @@ function S = Simpson (f,a,b,M)
   endfor 
   
   
-  %Se aplica la formula correspondiente
+  %Se aplica la fórmula correspondiente
   S = (h/3)*(f(a) + f(b)) + (2*h/3)*sum1 + (4*h/3)*sum2 ;
-    E = abs(S - quad(f,a,b));
-    printf('Simpson: %f \n', S);
+  %Hallamos la diferencia entre el resultado obtenido, y el valor real de la integral
+  E = abs(S - quad(f,a,b));
+  %Se imprimen los valores obtenidos
+  printf('Simpson: %f \n', S);
   printf('Error: %f \n\n', E);
 
 endfunction
