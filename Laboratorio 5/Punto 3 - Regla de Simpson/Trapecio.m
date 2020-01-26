@@ -1,4 +1,5 @@
 
+
 function T = Trapecio(f,a,b,M)
   % Se halla la longitud de cada intervalo
   h = (b-a)/M;
