@@ -1,38 +1,42 @@
 function Z = main()
   
-  pkg load symbolic;
-  syms t;
-  
+  #Se recibe la parte p(t) del x''(t)
   while(true)
     try 
-      str_function = input("Ingrese la función p(t): ");
-      p = function_handle(sym(str_function));
+      str_function = input("Ingrese la función p(t): ", 's');
+      p = inline(str_function, 't');
       break;
     catch
       printf("Favor ingresar una función correcta\n");
     end_try_catch
   endwhile 
   
+  
+  #Se recibe la parte q(t) del x''(t)
   while(true)
     try 
-      str_function = input("Ingrese la función q(t): ");
-      q = function_handle(sym(str_function));
+      str_function = input("Ingrese la función q(t): ", 's');
+      q = inline(str_function, 't');
       break;
     catch
       printf("Favor ingresar una función correcta\n");
     end_try_catch
   endwhile 
   
+  
+  #Se recibe la parte r(t) del x''(t)
   while(true)
     try 
-      str_function = input("Ingrese la función r(t): ");
-      r = function_handle(sym(str_function));
+      str_function = input("Ingrese la función r(t): ", 's');
+      r = inline(str_function, 't');
       break;
     catch
       printf("Favor ingresar una función correcta\n");
     end_try_catch
   endwhile 
   
+  
+  #Se recibe el valor del limite inferior a
   while(true)
     try 
       a = input("Ingrese el valor inicial del intervalo a evaluar: ");
@@ -43,6 +47,8 @@ function Z = main()
     end_try_catch
   endwhile 
   
+  
+  #Se recibe el valor del limite superior b
   while(true)
     try 
       b = input("Ingrese el valor final del intervalo a evaluar: ");
@@ -53,6 +59,9 @@ function Z = main()
     end_try_catch
   endwhile 
   
+  
+  
+  #Se recibe el valor de alpha
   while(true)
     try 
       A = input("Ingrese el resultado de la función evaluada en el valor inicial: ");
@@ -63,6 +72,8 @@ function Z = main()
     end_try_catch
   endwhile
   
+  
+  #Se recibe el valor de beta
   while(true)
     try 
       B = input("Ingrese el resultado de la función evaluada en el valor final: ");
@@ -73,6 +84,8 @@ function Z = main()
     end_try_catch
   endwhile
   
+  
+  #Se recibe el valor de h
   while(true)
     try 
       h = input("Ingrese la distancia que hay entre cada una de las iteraciones: ");
@@ -83,16 +96,19 @@ function Z = main()
     end_try_catch
   endwhile
   
-  #while(true)
-  #  try 
-  #    str_function = input("Ingrese la función real: ");
-  #    Y = function_handle(sym(str_function));
-  #    break;
-  #  catch
-  #    printf("Favor ingresar una función correcta\n");
-  #  end_try_catch
-  #endwhile 
-  o = (a:h:(b+h));
-  Y = input("Ingrese la función real: ");
+  
+  #Se recibe la funcion real para comparar y poder graficar
+  while(true)
+    try
+       o = (a:h:(b+h));
+       Y = input("Ingrese la función real: ");
+       break;
+    catch
+      printf("Favor ingresar una función correcta\n");
+    end_try_catch
+  endwhile 
+  
+  #Se llama la funcion disparo lineal encargada de resolver el ejercicio
   DisparoLineal(p,q,r,a,b,A,B,h,Y)
+  
 endfunction
