@@ -100,8 +100,9 @@ function X = Main()
   while(true)
     try
       vp = input("Ingrese el número del intervalo de la posición al cual quiere hacer hallar el polinomio interpolador de Newton: ");
-      while(vp>h)
+      while(vp>L/h)
         vp = input("Ingrese un valor menor al número de intervalos h que se va a evaluar: ");
+      endwhile
       break;
     catch
       printf("Favor ingresar un valor apropiado\n");
@@ -110,8 +111,8 @@ function X = Main()
   
   #Con los puntos X y Y recibidos tanto para px, como para py, hallamos una función que aproxime estos valores
   #Por medio del método de mínimos cuadrados
-  px = inline(MinimosCuadrados(pxx,pxy,4,3),'X')
-  pt = inline(MinimosCuadrados(ptx,pty,4,3),'X')
+  px = inline(MinimosCuadrados(pxx,pxy,length(pxx),4),'X')
+  pt = inline(MinimosCuadrados(ptx,pty,length(ptx),4),'X')
 
   #Con los valores que tenemos hasta ahora, utilizamos la función FlujoVehicular para hallar las densidades en los intervalos
   densidad = FlujoVehicular(L,T,h,k,px,pt,a,vp);
