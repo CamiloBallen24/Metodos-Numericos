@@ -111,8 +111,8 @@ function X = Main()
   
   #Con los puntos X y Y recibidos tanto para px, como para py, hallamos una función que aproxime estos valores
   #Por medio del método de mínimos cuadrados
-  px = inline(MinimosCuadrados(pxx,pxy,length(pxx),4),'X')
-  pt = inline(MinimosCuadrados(ptx,pty,length(ptx),4),'X')
+  px = inline(MinimosCuadrados(pxx,pxy,length(pxx),5),'X')
+  pt = inline(MinimosCuadrados(ptx,pty,length(ptx),5),'X')
 
   #Con los valores que tenemos hasta ahora, utilizamos la función FlujoVehicular para hallar las densidades en los intervalos
   densidad = FlujoVehicular(L,T,h,k,px,pt,a,vp);

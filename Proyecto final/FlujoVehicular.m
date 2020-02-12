@@ -32,6 +32,10 @@ function X = FlujoVehicular(L,T,h,k,px,pt,a,vp)
   [x,t]=meshgrid(x,t);
   z=matriz(c,b);
   mesh(z)
+  title("Densidad con respecto a la posición y al tiempo");
+  xlabel('Distancia'); 
+  ylabel('Tiempo');
+  zlabel('Densidad');
   
   #Finalmente, hallamos el polinomio interpolador de Newton para la posición ingresada anteriormente
   #Para ello, hallamos los vectores vpx y vpy, para posteriormente realizar este proceso en la función Newton
@@ -51,6 +55,9 @@ function X = FlujoVehicular(L,T,h,k,px,pt,a,vp)
   figure;
   funcion=inline(PP,'x');
   plot(vpx,funcion(vpx));
+  title(strcat("Polinomio interpolador de Newton en la posición: ",num2str(vp*h)));
+  xlabel("Tiempo");
+  ylabel("Densidad");
   #Y devolvemos la matriz que obtuvimos como resultado
   X=matriz;  
 endfunction
